@@ -1,4 +1,4 @@
-/* ---------- Basics ---------- */
+
 :root {
   --maroon: #800000;
   --maroon-dark: #5a0000;
@@ -31,7 +31,7 @@ h1, h2, h3 {
   margin: 0 0 12px;
 }
 
-/* ---------- Header ---------- */
+
 .header {
   position: sticky;
   top: 0;
@@ -75,7 +75,7 @@ h1, h2, h3 {
   color: var(--maroon-dark);
 }
 
-/* ---------- Hero ---------- */
+
 .hero {
   background: var(--maroon);
   color: #fff;
@@ -92,7 +92,7 @@ h1, h2, h3 {
   margin: 0 auto 24px;
 }
 
-/* ---------- Sections ---------- */
+
 .section {
   max-width: 1000px;
   margin: 0 auto;
@@ -111,7 +111,6 @@ h1, h2, h3 {
   border-bottom: 1px solid var(--gray-border);
 }
 
-/* ---------- Buttons ---------- */
 .btn {
   background: var(--maroon);
   color: #fff;
@@ -150,7 +149,6 @@ h1, h2, h3 {
   margin-top: 16px;
 }
 
-/* ---------- Result message ---------- */
 .result {
   display: inline-block;
   margin-top: 24px;
@@ -161,7 +159,7 @@ h1, h2, h3 {
   border-radius: 8px;
 }
 
-/* ---------- Cards ---------- */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -198,7 +196,7 @@ h1, h2, h3 {
   width: 100%;
 }
 
-/* ---------- Note ---------- */
+
 .note {
   margin-top: 28px;
   font-size: 0.9rem;
@@ -206,7 +204,7 @@ h1, h2, h3 {
   font-style: italic;
 }
 
-/* ---------- About ---------- */
+
 .about {
   background: #fff;
   max-width: none;
@@ -219,7 +217,7 @@ h1, h2, h3 {
   color: var(--muted);
 }
 
-/* ---------- Footer ---------- */
+
 .footer {
   background: var(--maroon-dark);
   color: #fff;
@@ -232,7 +230,7 @@ h1, h2, h3 {
   margin: 2px 0;
 }
 
-/* ---------- Sample WiFi Network ---------- */
+
 .network {
   max-width: 320px;
   margin: 32px auto 0;
@@ -297,7 +295,7 @@ h1, h2, h3 {
   transform: none;
 }
 
-/* ---------- Mobile ---------- */
+
 @media (max-width: 600px) {
   .header-inner {
     justify-content: center;

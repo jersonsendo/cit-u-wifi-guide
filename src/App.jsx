@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// Sample/demo data for the four WiFi spot cards
+
 const buildings = [
   { name: "NGE Building", activity: "Coding", signal: "Strong", noise: "Moderate" },
   { name: "RTL Building", activity: "Studying", signal: "Strong", noise: "Quiet" },
@@ -8,7 +8,7 @@ const buildings = [
   { name: "GLE Building", activity: "Group Work", signal: "Strong", noise: "Moderate" },
 ];
 
-// Maps each activity button to its recommended building
+
 const recommendations = {
   Study: "RTL Building",
   Code: "NGE Building",
