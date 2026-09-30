@@ -1,26 +1,16 @@
-# CIT-U WiFi Spot Guide
+# React + Vite
 
-A small React.js + pure CSS website that helps CIT-U students pick a building based on what they need to do.
-All WiFi info is **sample data** for a school activity.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Setup
+Currently, two official plugins are available:
 
-```bash
-npm create vite@latest cit-u-wifi-guide -- --template react
-cd cit-u-wifi-guide
-npm install
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Replace `src/App.jsx`, `src/App.css`, and `src/main.jsx` with the files in this project
-(and delete `src/index.css` if Vite created one), then run:
+## React Compiler
 
-```bash
-npm run dev
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Concepts demonstrated
-- Components: Header, Home, Recommendation, WifiSpots, About, Footer
-- `useState()` for the selected activity and selected building
-- `.map()` to render the building cards
-- `onClick` event handling
-- Conditional rendering of the recommendation and selection message
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

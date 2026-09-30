@@ -1,8 +1,9 @@
 /* ---------- Basics ---------- */
 :root {
-  --green: #1b7a43;
-  --green-dark: #145c32;
-  --green-light: #e6f3ea;
+  --maroon: #800000;
+  --maroon-dark: #5a0000;
+  --gold: #f2b705;
+  --gold-light: #fbf1cf;
   --gray: #f3f4f6;
   --gray-border: #d9dde1;
   --text: #222;
@@ -36,7 +37,7 @@ h1, h2, h3 {
   top: 0;
   z-index: 10;
   background: #fff;
-  border-bottom: 1px solid var(--gray-border);
+  border-bottom: 3px solid var(--gold);
 }
 
 .header-inner {
@@ -53,7 +54,7 @@ h1, h2, h3 {
 .logo {
   margin: 0;
   font-size: 1.25rem;
-  color: var(--green);
+  color: var(--maroon);
 }
 
 .nav {
@@ -70,13 +71,13 @@ h1, h2, h3 {
 }
 
 .nav a:hover {
-  background: var(--green-light);
-  color: var(--green-dark);
+  background: var(--gold-light);
+  color: var(--maroon-dark);
 }
 
 /* ---------- Hero ---------- */
 .hero {
-  background: var(--green);
+  background: var(--maroon);
   color: #fff;
   text-align: center;
   padding: 80px 20px;
@@ -100,7 +101,7 @@ h1, h2, h3 {
 }
 
 .section h2 {
-  color: var(--green-dark);
+  color: var(--maroon-dark);
   font-size: 1.7rem;
 }
 
@@ -112,7 +113,7 @@ h1, h2, h3 {
 
 /* ---------- Buttons ---------- */
 .btn {
-  background: var(--green);
+  background: var(--maroon);
   color: #fff;
   border: none;
   padding: 10px 22px;
@@ -123,22 +124,22 @@ h1, h2, h3 {
 }
 
 .btn:hover {
-  background: var(--green-dark);
+  background: var(--maroon-dark);
   transform: translateY(-2px);
 }
 
 .btn.active {
-  background: var(--green-dark);
-  outline: 3px solid var(--green-light);
+  background: var(--maroon-dark);
+  outline: 3px solid var(--gold);
 }
 
 .btn-light {
-  background: #fff;
-  color: var(--green-dark);
+  background: var(--gold);
+  color: #3a0000;
 }
 
 .btn-light:hover {
-  background: var(--green-light);
+  background: #ffd34d;
 }
 
 .button-row {
@@ -154,8 +155,8 @@ h1, h2, h3 {
   display: inline-block;
   margin-top: 24px;
   padding: 10px 20px;
-  background: var(--green-light);
-  color: var(--green-dark);
+  background: var(--gold-light);
+  color: var(--maroon-dark);
   font-weight: bold;
   border-radius: 8px;
 }
@@ -172,6 +173,7 @@ h1, h2, h3 {
 .card {
   background: #fff;
   border: 1px solid var(--gray-border);
+  border-top: 4px solid var(--gold);
   border-radius: 12px;
   padding: 20px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -183,7 +185,7 @@ h1, h2, h3 {
 }
 
 .card h3 {
-  color: var(--green);
+  color: var(--maroon);
 }
 
 .card p {
@@ -219,14 +221,80 @@ h1, h2, h3 {
 
 /* ---------- Footer ---------- */
 .footer {
-  background: var(--green-dark);
+  background: var(--maroon-dark);
   color: #fff;
   text-align: center;
   padding: 24px 20px;
+  border-top: 3px solid var(--gold);
 }
 
 .footer p {
   margin: 2px 0;
+}
+
+/* ---------- Sample WiFi Network ---------- */
+.network {
+  max-width: 320px;
+  margin: 32px auto 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--gray-border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.network h3 {
+  color: var(--maroon);
+}
+
+.signal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  height: 28px;
+  margin-bottom: 8px;
+}
+
+.bar {
+  width: 8px;
+  background: var(--gray-border);
+  border-radius: 2px;
+}
+
+.bar:nth-child(1) { height: 7px; }
+.bar:nth-child(2) { height: 14px; }
+.bar:nth-child(3) { height: 21px; }
+.bar:nth-child(4) { height: 28px; }
+
+.bar.on {
+  background: var(--maroon);
+}
+
+.status {
+  margin: 4px 0 12px;
+  font-weight: bold;
+  color: var(--muted);
+}
+
+.status.connecting {
+  color: #a87900;
+}
+
+.status.connected {
+  color: var(--maroon);
+}
+
+.network-info {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* ---------- Mobile ---------- */

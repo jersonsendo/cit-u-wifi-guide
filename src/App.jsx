@@ -94,11 +94,56 @@ function WifiSpots() {
 
       {selected && <p className="result">You selected {selected}.</p>}
 
-      <p className="note">
-        WiFi information shown on this website is sample data created for this
-        React.js activity and does not represent real-time WiFi conditions.
-      </p>
+      <WifiNetwork />
     </section>
+  );
+}
+
+function WifiNetwork() {
+  // status can be: "disconnected", "connecting", or "connected"
+  const [status, setStatus] = useState("disconnected");
+
+  function handleConnect() {
+    setStatus("connecting");
+    // Pretend the connection takes 2 seconds
+    setTimeout(() => setStatus("connected"), 2000);
+  }
+
+  function handleDisconnect() {
+    setStatus("disconnected");
+  }
+
+  return (
+    <div className="network">
+      <h3>CITU-Student-WiFi</h3>
+
+      <div className="signal">
+        <span className={status === "connected" ? "bar on" : "bar"}></span>
+        <span className={status === "connected" ? "bar on" : "bar"}></span>
+        <span className={status === "connected" ? "bar on" : "bar"}></span>
+        <span className={status === "connected" ? "bar on" : "bar"}></span>
+      </div>
+
+      <p className={"status " + status}>
+        {status === "disconnected" && "Not connected"}
+        {status === "connecting" && "Connecting..."}
+        {status === "connected" && "Connected"}
+      </p>
+
+      {status === "connected" && (
+        <p className="network-info">Sample IP address: 192.168.1.25</p>
+      )}
+
+      {status === "disconnected" && (
+        <button className="btn" onClick={handleConnect}>Connect</button>
+      )}
+      {status === "connecting" && (
+        <button className="btn" disabled>Connecting...</button>
+      )}
+      {status === "connected" && (
+        <button className="btn" onClick={handleDisconnect}>Disconnect</button>
+      )}
+    </div>
   );
 }
 
@@ -110,7 +155,6 @@ function About() {
         CIT-U WiFi Spot Guide is a simple student-made website concept designed
         to help students choose a suitable CIT-U building based on their activity.
       </p>
-      <p>This project demonstrates basic React.js and pure CSS development.</p>
     </section>
   );
 }
@@ -119,7 +163,6 @@ function Footer() {
   return (
     <footer className="footer">
       <p>CIT-U WiFi Spot Guide © 2026</p>
-      <p>Created for a React.js and CSS activity.</p>
     </footer>
   );
 }
