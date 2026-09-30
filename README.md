@@ -1,16 +1,31 @@
-# React + Vite
+# CIT-U WiFi Spot Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small React.js + pure CSS website that helps CIT-U students choose a building based on what they need to do (study, code, or group work). It includes a simulated WiFi network card.
 
-Currently, two official plugins are available:
+All WiFi information is **sample data** for a school activity. Nothing connects to or measures a real network.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How to run the project
 
-## React Compiler
+You need [Node.js](https://nodejs.org) (LTS version) installed.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+git clone https://github.com/YOUR-USERNAME/cit-u-wifi-guide.git
+cd cit-u-wifi-guide
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+Then open the link shown in the terminal (usually http://localhost:5173).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## What to check
+
+- Navigation links and the **Explore WiFi Spots** button scroll to their sections
+- **Study / Code / Group Work** buttons show a recommended building
+- **Choose Spot** shows "You selected [Building Name]."
+- The WiFi card goes Not connected, Connecting..., Connected, and back with Disconnect
+
+## Built with
+
+React.js, JavaScript, pure CSS, Vite
+
+See `DOCUMENTATION.md` for a full explanation of how the code works.
