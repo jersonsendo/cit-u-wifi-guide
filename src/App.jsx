@@ -13,6 +13,7 @@ const recommendations = {
   Study: "RTL Building",
   Code: "NGE Building",
   "Group Work": "GLE Building",
+  "Academic Work": "Academic Building",
 };
 
 function scrollToSection(id) {
