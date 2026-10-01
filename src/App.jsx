@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-
+// Sample/demo data for the four WiFi spot cards
 const buildings = [
   { name: "NGE Building", activity: "Coding", signal: "Strong", noise: "Moderate" },
   { name: "RTL Building", activity: "Studying", signal: "Strong", noise: "Quiet" },
@@ -8,7 +8,7 @@ const buildings = [
   { name: "GLE Building", activity: "Group Work", signal: "Strong", noise: "Moderate" },
 ];
 
-
+// Maps each activity button to its recommended building
 const recommendations = {
   Study: "RTL Building",
   Code: "NGE Building",
@@ -74,6 +74,12 @@ function Recommendation() {
 function WifiSpots() {
   const [selected, setSelected] = useState("");
 
+  // Remember the chosen building, then scroll down to the sample WiFi network
+  function handleChooseSpot(name) {
+    setSelected(name);
+    scrollToSection("wifi-network");
+  }
+
   return (
     <section id="wifi-spots" className="section">
       <h2>WiFi Spots</h2>
@@ -85,7 +91,7 @@ function WifiSpots() {
             <p><strong>Best for:</strong> {building.activity}</p>
             <p><strong>Signal:</strong> {building.signal}</p>
             <p><strong>Noise:</strong> {building.noise}</p>
-            <button className="btn" onClick={() => setSelected(building.name)}>
+            <button className="btn" onClick={() => handleChooseSpot(building.name)}>
               Choose Spot
             </button>
           </div>
@@ -114,7 +120,7 @@ function WifiNetwork() {
   }
 
   return (
-    <div className="network">
+    <div id="wifi-network" className="network">
       <h3>CITU-Student-WiFi</h3>
 
       <div className="signal">
