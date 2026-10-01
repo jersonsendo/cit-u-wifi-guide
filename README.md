@@ -20,8 +20,8 @@ Then open the link shown in the terminal (usually http://localhost:5173).
 ## What to check
 
 - Navigation links and the **Explore WiFi Spots** button scroll to their sections
-- **Study / Code / Group Work** buttons show a recommended building
-- **Choose Spot** shows "You selected [Building Name]."
+- **Study / Code / Group Work / Academic Work** buttons show a recommended building and scroll to its card
+- **Choose Spot** shows "You selected [Building Name]." and scrolls to the WiFi network card
 - The WiFi card goes Not connected, Connecting..., Connected, and back with Disconnect
 
 ## Built with

@@ -20,8 +20,8 @@ A small student website built with **React.js** and **pure CSS** that helps CIT-
 
 1. Sticky navigation header with smooth-scrolling links
 2. Hero section with a button that scrolls to the WiFi Spots section
-3. Activity recommendation (Study, Code, Group Work)
-4. Four WiFi spot cards with a **Choose Spot** button
+3. Activity recommendation (Study, Code, Group Work, Academic Work) that scrolls to the recommended building's card
+4. Four WiFi spot cards with a **Choose Spot** button that scrolls to the simulated WiFi network
 5. Simulated WiFi network card (Connect / Connecting / Connected / Disconnect)
 6. About section
 7. Footer
@@ -116,7 +116,7 @@ Page order, top to bottom:
 ```text
 Header          (logo + navigation)
 Home            (hero + Explore button)
-Recommendation  (Study / Code / Group Work)
+Recommendation  (Study / Code / Group Work / Academic Work)
 WifiSpots       (4 cards + simulated WiFi network)
 About           (project description)
 Footer
@@ -150,7 +150,17 @@ function scrollToSection(id) {
 }
 ```
 
-The button uses `onClick` to call this helper, which finds the WiFi Spots section and scrolls to it.
+The button uses `onClick` to call this helper, which finds the WiFi Spots section and scrolls to it. This same helper is reused by the activity buttons and the **Choose Spot** buttons, so every scroll in the site behaves the same way.
+
+**Card id helper:** each building card needs its own `id` so the page knows where to scroll. This small function builds one from the building's name:
+
+```jsx
+function getCardId(name) {
+  return name.toLowerCase().replace(/ /g, "-");
+}
+```
+
+For example, `"RTL Building"` becomes `"rtl-building"`.
 
 ### 6.3 Recommendation
 
@@ -163,6 +173,7 @@ const recommendations = {
   Study: "RTL Building",
   Code: "NGE Building",
   "Group Work": "GLE Building",
+  "Academic Work": "Academic Building",
 };
 ```
 
@@ -176,7 +187,18 @@ const [activity, setActivity] = useState("");
 
 It starts empty, meaning nothing has been chosen yet.
 
-**The buttons** are created with `.map()` over `Object.keys(recommendations)`, which gives `["Study", "Code", "Group Work"]`. Clicking a button runs `setActivity(item)`.
+**The buttons** are created with `.map()` over `Object.keys(recommendations)`, which gives `["Study", "Code", "Group Work", "Academic Work"]`. Because the buttons come from this object, adding a new activity to it automatically adds a new button.
+
+**Clicking a button** runs `handleActivity(item)`. It does two things: it saves the activity in state, and it scrolls to the recommended building's card.
+
+```jsx
+function handleActivity(item) {
+  setActivity(item);
+  scrollToSection(getCardId(recommendations[item]));
+}
+```
+
+For example, clicking **Study** looks up `"RTL Building"`, turns it into the id `"rtl-building"`, and scrolls to the card with that id.
 
 **The result** appears only when something is chosen:
 
@@ -201,7 +223,7 @@ const buildings = [
 ];
 ```
 
-**Making the cards with `.map()`:** instead of writing four cards by hand, `.map()` loops through the array and creates one card for each building. The `key={building.name}` helps React tell the cards apart.
+**Making the cards with `.map()`:** instead of writing four cards by hand, `.map()` loops through the array and creates one card for each building. The `key={building.name}` helps React tell the cards apart, and `id={getCardId(building.name)}` gives each card the id that the activity buttons scroll to.
 
 **The state:**
 
@@ -209,7 +231,16 @@ const buildings = [
 const [selected, setSelected] = useState("");
 ```
 
-Clicking **Choose Spot** runs `setSelected(building.name)`, and this message appears:
+Clicking **Choose Spot** runs `handleChooseSpot(building.name)`. It saves the chosen building and then scrolls down to the simulated WiFi network card (which has `id="wifi-network"`):
+
+```jsx
+function handleChooseSpot(name) {
+  setSelected(name);
+  scrollToSection("wifi-network");
+}
+```
+
+The selection message appears:
 
 ```jsx
 {selected && <p className="result">You selected {selected}.</p>}
@@ -437,8 +468,8 @@ git push
 
 1. Open the site and introduce the purpose: helping students choose a building.
 2. Click the nav links to show smooth scrolling, then the **Explore WiFi Spots** button.
-3. Click **Study**, **Code**, and **Group Work** to show the recommendation changing.
-4. Click **Choose Spot** on a card to show the selection message.
+3. Click **Study**, **Code**, **Group Work**, and **Academic Work** to show the page scrolling to the recommended building's card.
+4. Click **Choose Spot** on a card to show the selection message and the page scrolling to the WiFi network.
 5. Click **Connect** on the WiFi card, wait for **Connected**, then click **Disconnect**.
 6. Open `App.jsx` and explain: components, `useState`, `.map()`, `onClick`, and conditional rendering.
 7. Open `App.css` and show the color variables, the grid, and the hover effects.
