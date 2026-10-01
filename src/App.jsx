@@ -19,6 +19,11 @@ function scrollToSection(id) {
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
+// Turns "RTL Building" into "rtl-building" so each card has its own id
+function getCardId(name) {
+  return name.toLowerCase().replace(/ /g, "-");
+}
+
 function Header() {
   return (
     <header className="header">
@@ -49,6 +54,12 @@ function Home() {
 function Recommendation() {
   const [activity, setActivity] = useState("");
 
+  // Remember the activity, then scroll to the recommended building's card
+  function handleActivity(item) {
+    setActivity(item);
+    scrollToSection(getCardId(recommendations[item]));
+  }
+
   return (
     <section className="section recommendation">
       <h2>What are you doing today?</h2>
@@ -57,7 +68,7 @@ function Recommendation() {
           <button
             key={item}
             className={activity === item ? "btn active" : "btn"}
-            onClick={() => setActivity(item)}
+            onClick={() => handleActivity(item)}
           >
             {item}
           </button>
@@ -86,7 +97,7 @@ function WifiSpots() {
 
       <div className="cards">
         {buildings.map((building) => (
-          <div className="card" key={building.name}>
+          <div className="card" key={building.name} id={getCardId(building.name)}>
             <h3>{building.name}</h3>
             <p><strong>Best for:</strong> {building.activity}</p>
             <p><strong>Signal:</strong> {building.signal}</p>
