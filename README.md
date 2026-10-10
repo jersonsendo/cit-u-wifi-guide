@@ -24,6 +24,33 @@ Then open the link shown in the terminal (usually http://localhost:5173).
 - **Choose Spot** shows "You selected [Building Name]." and scrolls to the WiFi network card
 - The WiFi card goes Not connected, Connecting..., Connected, and back with Disconnect
 
+## Project structure
+
+```
+src/
+  main.jsx            App entry (BrowserRouter)
+  App.jsx             Page sections, WiFi card and app state
+  App.css             Tailwind theme (maroon / gold)
+  pages/
+    FeedbackPage.jsx  Feedback form and list
+  models/             Model classes (see class diagram)
+    Building.js  Voucher.js  Recommendation.js  WifiFilter.js
+    WifiSession.js  Feedback.js  FeedbackList.js  index.js
+docs/
+  class-diagram.png   Class diagram (also .svg and editable .mmd)
+```
+
+## Class diagram
+
+![Class diagram](docs/class-diagram.png)
+
+The diagram shows the seven model classes in `src/models/` and the React components that use them.
+The source is `docs/class-diagram.mmd` (Mermaid). To regenerate the image:
+
+```bash
+npx @mermaid-js/mermaid-cli -i docs/class-diagram.mmd -o docs/class-diagram.png -s 2
+```
+
 ## Built with
 
 React.js, JavaScript, Tailwind CSS, Vite
