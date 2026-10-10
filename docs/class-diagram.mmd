@@ -1,0 +1,118 @@
+classDiagram
+direction LR
+
+class Building {
+  <<model>>
+  +String name
+  +String activity
+  +String signal
+  +String noise
+  +getCardId() String
+  +getSignalBars() int
+  +matches(filter) boolean
+  +samples()$ Building[]
+}
+class Voucher {
+  <<model>>
+  +String code
+  +String plan
+  +matches(enteredCode) boolean
+  +samples()$ Voucher[]
+}
+class Recommendation {
+  <<model>>
+  +String activity
+  +String buildingName
+  +forActivity(list, activity)$ Recommendation
+  +samples()$ Recommendation[]
+}
+class WifiFilter {
+  <<model>>
+  +String signal
+  +String noise
+  +SIGNAL_OPTIONS$ String[]
+  +NOISE_OPTIONS$ String[]
+  +matches(building) boolean
+  +countMatches(buildings) int
+}
+class WifiSession {
+  <<model>>
+  +String status
+  +int seconds
+  +String error
+  +SSID$ String
+  +login(code, building) boolean
+  +completeLogin() void
+  +tick() void
+  +disconnect() void
+  +getSignalBars() int
+  +formatTime() String
+}
+class Feedback {
+  <<model>>
+  +int id
+  +String name
+  +String building
+  +int rating
+  +String comment
+  +getStars() String
+  +isValid() boolean
+}
+class FeedbackList {
+  <<model>>
+  +Feedback[] items
+  +add(feedback) FeedbackList
+  +count() int
+  +averageRating() String
+  +forBuilding(name) Feedback[]
+}
+
+class App {
+  <<component>>
+  -String activity
+  -FeedbackList feedbackList
+}
+class Header { <<component>> }
+class Home { <<component>> }
+class Recommendations { <<component>> }
+class WifiSpots {
+  <<component>>
+  -String selected
+  -WifiFilter filter
+}
+class WifiNetwork {
+  <<component>>
+  -WifiSession session
+}
+class About { <<component>> }
+class Footer { <<component>> }
+class FeedbackPage {
+  <<component>>
+  -String name
+  -int rating
+  -String comment
+  +handleSubmit() void
+}
+
+App *-- Header
+App *-- Footer
+App *-- Home
+App *-- Recommendations
+App *-- WifiSpots
+App *-- About
+App *-- FeedbackPage
+WifiSpots *-- WifiNetwork
+
+App o-- FeedbackList : state
+FeedbackList "1" o-- "*" Feedback
+Feedback ..> Building : refers to by name
+Recommendation ..> Building : recommends
+Recommendations ..> Recommendation : reads
+WifiSpots "1" o-- "*" Building : lists
+WifiSpots --> WifiFilter : uses
+WifiFilter ..> Building : tests
+WifiNetwork --> WifiSession : drives
+WifiSession "1" o-- "*" Voucher : accepts
+WifiSession --> Building : connects from
+FeedbackPage ..> Feedback : creates
+FeedbackPage ..> Building : picks
