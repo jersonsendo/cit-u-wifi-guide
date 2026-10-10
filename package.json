@@ -1,16 +1,11 @@
 {
   "name": "cit-u-wifi-guide",
   "private": true,
-<<<<<<< HEAD
   "version": "1.0.0",
-=======
-  "version": "0.0.0",
->>>>>>> 4418eb4625db5b9002d4c6355e53bb00e6af8307
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-<<<<<<< HEAD
     "preview": "vite preview"
   },
   "dependencies": {
@@ -23,22 +18,5 @@
     "@vitejs/plugin-react": "^5.0.0",
     "tailwindcss": "^4.1.11",
     "vite": "^7.0.0"
-=======
-    "lint": "oxlint",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "tailwindcss": "^4.3.3"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.7",
-    "@vitejs/plugin-react": "^6.1.1",
-    "oxlint": "^1.81.0",
-    "vite": "^8.3.0"
->>>>>>> 4418eb4625db5b9002d4c6355e53bb00e6af8307
   }
 }
