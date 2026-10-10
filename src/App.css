@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Custom CIT-U colors (maroon and gold). Use them like: bg-maroon, text-gold */
+@theme {
+  --color-maroon: #800000;
+  --color-maroon-dark: #5a0000;
+  --color-gold: #f2b705;
+  --color-gold-light: #fbf1cf;
+
+  /* "Pop" animation for the recommended card: it grows, then settles slightly bigger.
+     The 0.5s delay gives the page time to scroll to the card first. */
+  --animate-pop: pop 0.7s ease-out 0.5s both;
+
+  @keyframes pop {
+    0% {
+      scale: 1;
+    }
+    40% {
+      scale: 1.12;
+    }
+    70% {
+      scale: 1.02;
+    }
+    100% {
+      scale: 1.05;
+    }
+  }
+}
+
+/* Smooth scrolling, and keep headings visible below the sticky header */
+@layer base {
+  html {
+    @apply scroll-smooth scroll-pt-20;
+  }
+
+  body {
+    @apply bg-gray-100 text-gray-800;
+  }
+}
